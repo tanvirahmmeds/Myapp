@@ -1,7 +1,7 @@
 name = "myapp-worker"
 main = "src/worker.js"
 type = "javascript"
-account_id = "REPLACE_WITH_ACCOUNT_ID"
+account_id = "8fe4c98145f75ec4b181a54270f116b8"
 compatibility_date = "2026-08-01"
 
 # Optional: set environment variables here for static values. Secrets MUST be set via
