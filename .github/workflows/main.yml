@@ -1,0 +1,27 @@
+name: Deploy to Cloudflare Workers
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Wrangler
+        run: npm install -g wrangler@2
+      - name: Put HF_API_KEY into Cloudflare Worker secret
+        env:
+          HF_API_KEY: ${{ secrets.HF_API_KEY }}
+          CF_ACCOUNT_ID: 8fe4c98145f75ec4b181a54270f116b8
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          echo "$HF_API_KEY" | wrangler secret put HF_API_KEY --account-id $CF_ACCOUNT_ID
+      - name: Publish to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v2
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          workingDirectory: .
+          args: publish
+          
