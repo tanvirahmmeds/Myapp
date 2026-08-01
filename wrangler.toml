@@ -1,0 +1,15 @@
+name = "myapp-worker"
+main = "src/worker.js"
+type = "javascript"
+account_id = "REPLACE_WITH_ACCOUNT_ID"
+compatibility_date = "2026-08-01"
+
+# Optional: set environment variables here for static values. Secrets MUST be set via
+# `wrangler secret put HF_API_KEY` or in the Cloudflare dashboard (recommended).
+# To use different environments, add an [env.production] table, etc.
+
+[build]
+command = ""
+
+[vars]
+# HF_API_KEY = "" # don't commit secrets here
